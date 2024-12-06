@@ -1,4 +1,4 @@
-package com.leonardomassaroli.trilhaapp.trilhaapp
+package com.example.trilhaapp
 
 import io.flutter.embedding.android.FlutterActivity
 
