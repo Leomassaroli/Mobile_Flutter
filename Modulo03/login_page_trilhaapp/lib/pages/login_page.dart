@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaapp/pages/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -8,9 +9,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String email = "";
-  String senha = "";
+  TextEditingController emailController = new TextEditingController(text: "");
+  TextEditingController senhaController = new TextEditingController(text: "");
   bool isObscureText = true;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -39,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   const SizedBox(
-                    height: 25,
+                    height: 35,
                   ),
                   const Text(
                     "Já tem cadastro?",
@@ -56,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
                   const SizedBox(
-                    height: 40,
+                    height: 60,
                   ),
                   Container(
                     width: double.infinity,
@@ -64,8 +66,9 @@ class _LoginPageState extends State<LoginPage> {
                     height: 30,
                     alignment: Alignment.center,
                     child: TextField(
+                      controller: emailController,
                       onChanged: (value) {
-                        email = value;
+                        debugPrint(value);
                       },
                       style: const TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
@@ -92,9 +95,10 @@ class _LoginPageState extends State<LoginPage> {
                     height: 30,
                     alignment: Alignment.center,
                     child: TextField(
+                      controller: senhaController,
                       obscureText: isObscureText,
                       onChanged: (value) {
-                        senha = value;
+                        debugPrint(value);
                       },
                       style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
@@ -136,8 +140,22 @@ class _LoginPageState extends State<LoginPage> {
                         width: double.infinity,
                         child: TextButton(
                             onPressed: () {
-                              print(email);
-                              print(senha);
+                              if (emailController.text.trim() ==
+                                      "email@email.com" &&
+                                  senhaController.text.trim() == "123") {
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const HomePage()));
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content:
+                                            Text("Erro ao efetuar o Login!")));
+                              }
+                              debugPrint(emailController.text);
+                              debugPrint(senhaController.text);
                             },
                             style: ButtonStyle(
                                 shape: WidgetStateProperty.all(
@@ -163,7 +181,7 @@ class _LoginPageState extends State<LoginPage> {
                       "Esqueci minha senha",
                       style: TextStyle(
                           fontSize: 20,
-                          color: Color.fromARGB(255, 198, 201, 53),
+                          color: Color.fromARGB(255, 1, 104, 35),
                           fontWeight: FontWeight.w400),
                     ),
                   ),
@@ -178,7 +196,7 @@ class _LoginPageState extends State<LoginPage> {
                       "Criar Conta",
                       style: TextStyle(
                           fontSize: 20,
-                          color: Color.fromARGB(255, 46, 136, 46),
+                          color: Color.fromARGB(255, 255, 255, 255),
                           fontWeight: FontWeight.w400),
                     ),
                   ),
