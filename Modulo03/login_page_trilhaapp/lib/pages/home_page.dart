@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaapp/pages/my_account.dart';
+import 'package:trilhaapp/pages/page_one.dart';
+import 'package:trilhaapp/pages/page_two.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,6 +11,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  PageController controller = PageController(initialPage: 0);
+  int posicaoPagina = 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -18,46 +23,89 @@ class _HomePageState extends State<HomePage> {
         ),
         drawer: Drawer(
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+            padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 InkWell(
                   child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 5),
+                      padding: const EdgeInsets.symmetric(vertical: 5),
                       width: double.infinity,
-                      child: Text("My Account")),
-                  onTap: () {},
+                      child: const Text("My Account")),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MyAccount(
+                                  texto: "My Data",
+                                  dados: ["Name", "Address"],
+                                )));
+                  },
                 ),
-                Divider(),
-                SizedBox(
+                const Divider(),
+                const SizedBox(
                   height: 10,
                 ),
                 InkWell(
                   child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 5),
+                      padding: const EdgeInsets.symmetric(vertical: 5),
                       width: double.infinity,
-                      child: Text("Terms of use and privacy")),
+                      child: const Text("Terms of use and privacy")),
                   onTap: () {},
                 ),
-                Divider(),
-                SizedBox(
+                const Divider(),
+                const SizedBox(
                   height: 10,
                 ),
                 InkWell(
                   child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 5),
+                      padding: const EdgeInsets.symmetric(vertical: 5),
                       width: double.infinity,
-                      child: Text("Settings")),
+                      child: const Text("Settings")),
                   onTap: () {},
                 ),
-                Divider(),
-                SizedBox(
+                const Divider(),
+                const SizedBox(
                   height: 10,
                 ),
               ],
             ),
           ),
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              child: PageView(
+                controller: controller,
+                onPageChanged: (value) {
+                  setState(() {
+                    posicaoPagina = value;
+                  });
+                },
+                scrollDirection: Axis.horizontal,
+                children: const [
+                  PageOne(),
+                  PageTwo(),
+                ],
+              ),
+            ),
+            BottomNavigationBar(
+                onTap: (value) {
+                  controller.jumpToPage(value);
+                },
+                currentIndex: posicaoPagina,
+                items: const [
+                  BottomNavigationBarItem(
+                    label: "Page One",
+                    icon: Icon(Icons.home),
+                  ),
+                  BottomNavigationBarItem(
+                    label: "Page Two",
+                    icon: Icon(Icons.add),
+                  )
+                ])
+          ],
         ),
       ),
     );

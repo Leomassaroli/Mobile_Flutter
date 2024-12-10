@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:trilhaapp/pages/home_page.dart';
 
@@ -9,8 +10,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController emailController = new TextEditingController(text: "");
-  TextEditingController senhaController = new TextEditingController(text: "");
+  TextEditingController emailController = TextEditingController();
+  TextEditingController senhaController = TextEditingController();
   bool isObscureText = true;
 
   @override
@@ -33,8 +34,13 @@ class _LoginPageState extends State<LoginPage> {
                       Expanded(child: Container()),
                       Expanded(
                         flex: 6,
-                        child: Image.network(
-                          "https://hermes.digitalinnovation.one/assets/diome/logo.png",
+                        child: CachedNetworkImage(
+                          imageUrl:
+                              "https://hermes.digitalinnovation.one/assets/diome/logo.png",
+                          errorWidget: (context, url, error) => const Icon(
+                            Icons.error,
+                            color: Color.fromARGB(255, 255, 0, 0),
+                          ),
                         ),
                       ),
                       Expanded(child: Container()),
@@ -44,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 35,
                   ),
                   const Text(
-                    "Já tem cadastro?",
+                    "already registered?",
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -54,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 10,
                   ),
                   const Text(
-                    "Faça seu login e make the change_",
+                    "Log in and change your future_",
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
                   const SizedBox(
@@ -74,7 +80,8 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: const InputDecoration(
                           contentPadding: EdgeInsets.only(top: 20),
                           enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white)),
+                              borderSide: BorderSide(
+                                  color: Color.fromARGB(255, 255, 255, 255))),
                           focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.white)),
                           hintText: "Email",
@@ -107,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                               borderSide: BorderSide(color: Colors.white)),
                           focusedBorder: const UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.white)),
-                          hintText: "Senha",
+                          hintText: "Password",
                           hintStyle: const TextStyle(
                               color: Colors.white, fontSize: 19),
                           prefixIcon: const Icon(
@@ -193,7 +200,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 30,
                     alignment: Alignment.center,
                     child: const Text(
-                      "Criar Conta",
+                      "Create Account",
                       style: TextStyle(
                           fontSize: 20,
                           color: Color.fromARGB(255, 255, 255, 255),
