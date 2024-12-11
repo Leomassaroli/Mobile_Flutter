@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trilhaapp/pages/my_account.dart';
+import 'package:trilhaapp/pages/registration_data.dart';
 import 'package:trilhaapp/pages/page_one.dart';
 import 'package:trilhaapp/pages/page_two.dart';
 
@@ -31,16 +31,13 @@ class _HomePageState extends State<HomePage> {
                   child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 5),
                       width: double.infinity,
-                      child: const Text("My Account")),
+                      child: const Text("Registration Data")),
                   onTap: () {
                     Navigator.pop(context);
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const MyAccount(
-                                  texto: "My Data",
-                                  dados: ["Name", "Address"],
-                                )));
+                            builder: (context) => const MyAccount()));
                   },
                 ),
                 const Divider(),
