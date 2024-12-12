@@ -22,6 +22,7 @@ class _MyAccountState extends State<MyAccount> {
   var languages = [];
   var languagesSelected = [];
   var nivelSelecionado = "";
+  var salarioEscolhido = "";
 
   @override
   void initState() {
@@ -104,6 +105,12 @@ class _MyAccountState extends State<MyAccount> {
                     )
                     .toList(),
               ),
+              const TextLabel(texto: "Salary Requirements"),
+              Slider(
+                  min: 0,
+                  max: 10000,
+                  value: 5000,
+                  onChanged: (double value) {}),
               TextButton(
                 onPressed: () {
                   print(nomeController.text);
