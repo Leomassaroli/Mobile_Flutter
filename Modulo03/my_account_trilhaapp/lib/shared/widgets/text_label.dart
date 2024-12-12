@@ -9,7 +9,10 @@ class TextLabel extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 10),
       child: Text(texto,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+          style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w100,
+              color: Color.fromARGB(255, 0, 0, 0))),
     );
   }
 }
