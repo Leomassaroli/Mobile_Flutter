@@ -40,8 +40,8 @@ class _MyAccountState extends State<MyAccount> {
     for (var i = 0; i <= quantidadeMax; i++) {
       itens.add(
         DropdownMenuItem(
-          child: Text(i.toString()),
           value: i,
+          child: Text(i.toString()),
         ),
       );
     }
@@ -266,7 +266,6 @@ class _MyAccountState extends State<MyAccount> {
                   ],
                 ),
         ),
-        
       ),
     );
   }

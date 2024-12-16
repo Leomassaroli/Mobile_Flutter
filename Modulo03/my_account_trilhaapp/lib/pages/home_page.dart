@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trilhaapp/pages/registration_data.dart';
-import 'package:trilhaapp/pages/page_one.dart';
+import 'package:trilhaapp/pages/card_page.dart';
 import 'package:trilhaapp/pages/page_two.dart';
 import 'package:trilhaapp/shared/widgets/custom_drawer.dart';
 
@@ -35,7 +34,7 @@ class _HomePageState extends State<HomePage> {
                 },
                 scrollDirection: Axis.horizontal,
                 children: const [
-                  PageOne(),
+                  CardPage(),
                   PageTwo(),
                 ],
               ),

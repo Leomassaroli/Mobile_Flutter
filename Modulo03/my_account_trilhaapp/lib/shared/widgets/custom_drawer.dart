@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:trilhaapp/pages/login_page.dart';
 import 'package:trilhaapp/pages/registration_data.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -197,8 +198,62 @@ class CustomDrawer extends StatelessWidget {
             onTap: () {
               showDialog(
                   context: context,
-                  builder: (BuildContext bc) {
-                    return const AlertDialog();
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      elevation: 10,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      title: const Text(
+                        "Attention!",
+                        style: TextStyle(
+                            fontSize: 28,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500),
+                        textAlign: TextAlign.center,
+                      ),
+                      content: const Wrap(
+                        children: [
+                          Text("Would you to leave your account?",
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                              )),
+                        ],
+                      ),
+                      actions: [
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10))),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text(
+                              "No",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Color.fromARGB(255, 65, 28, 160),
+                                  fontWeight: FontWeight.w600),
+                            )),
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10))),
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const LoginPage()));
+                            },
+                            child: const Text(
+                              "Yes",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Color.fromARGB(255, 65, 28, 160),
+                                  fontWeight: FontWeight.w600),
+                            ))
+                      ],
+                    );
                   });
             },
           ),
