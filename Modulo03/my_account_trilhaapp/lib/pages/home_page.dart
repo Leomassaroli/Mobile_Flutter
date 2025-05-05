@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:trilhaapp/pages/card_page.dart';
-import 'package:trilhaapp/pages/page_two.dart';
+import 'package:trilhaapp/pages/list_view.dart';
+import 'package:trilhaapp/pages/image_assets.dart';
+import 'package:trilhaapp/pages/list_view_horizontal.dart';
 import 'package:trilhaapp/shared/widgets/custom_drawer.dart';
 
 class HomePage extends StatefulWidget {
@@ -35,11 +37,14 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.horizontal,
                 children: const [
                   CardPage(),
-                  PageTwo(),
+                  ImageAssets(),
+                  ListViewPage(),
+                  ListViewHorizontal(),
                 ],
               ),
             ),
             BottomNavigationBar(
+                type: BottomNavigationBarType.fixed,
                 onTap: (value) {
                   controller.jumpToPage(value);
                 },
@@ -52,7 +57,15 @@ class _HomePageState extends State<HomePage> {
                   BottomNavigationBarItem(
                     label: "Page Two",
                     icon: Icon(Icons.add),
-                  )
+                  ),
+                  BottomNavigationBarItem(
+                    label: "Page Three",
+                    icon: Icon(Icons.person),
+                  ),
+                  BottomNavigationBarItem(
+                    label: "Page Four",
+                    icon: Icon(Icons.list),
+                  ),
                 ])
           ],
         ),

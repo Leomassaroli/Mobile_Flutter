@@ -1,0 +1,2 @@
+C:/Users/Massaroli/Documents/GitHub/DIO/Mobile_Flutter/Modulo03/my_account_trilhaapp/android/app/.cxx/Debug/6x2c6b4e/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/Massaroli/Documents/GitHub/DIO/Mobile_Flutter/Modulo03/my_account_trilhaapp/android/app/.cxx/Debug/6x2c6b4e/armeabi-v7a/CMakeFiles/rebuild_cache.dir
